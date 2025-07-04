@@ -12,6 +12,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Google Trends API Serverless. Endpoints: /daily, /realtime, /related-topics' });
+});
+
 app.get('/daily', async (req, res) => {
   try {
     const { geo = 'US' } = req.query;
