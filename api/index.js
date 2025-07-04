@@ -2,16 +2,6 @@ const express = require('express');
 const googleTrends = require('google-trends-api');
 const app = express();
 
-// Middleware para requerir API KEY en cada request
-app.use((req, res, next) => {
-  const apiKey = process.env.API_KEY;
-  const clientKey = req.headers['x-api-key'];
-  if (!apiKey || clientKey !== apiKey) {
-    return res.status(401).json({ error: 'Unauthorized: Invalid or missing API KEY' });
-  }
-  next();
-});
-
 app.get('/', (req, res) => {
   res.json({ message: 'Google Trends API Serverless. Endpoints: /daily, /realtime, /related-topics' });
 });
